@@ -1,0 +1,76 @@
+@import url(https://db.onlinewebfonts.com/c/0a6ee448d1bd65c56f6cf256a7c6f20a?family=Bahnschrift);
+
+.Home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 20px;
+  font-family: "Bahnschrift";
+}
+
+.Home h2 {
+  margin: 10%;
+  color: #000;
+  text-align: center;
+  font-family: Bahnschrift;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.Surprise {
+  width: 80%;
+  color: #fff;
+  font-family: Bahnschrift;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border: none;
+  border-radius: 50px;
+  background: #ffc529;
+  padding: 10px 30px;
+  cursor: pointer;
+}
+
+.Surprise:hover,
+.Surprise:active {
+  background: #f90;
+}
+
+.Personalize {
+  color: #ffc529;
+  padding: 10px 20px;
+  font-family: Bahnschrift;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border-radius: 50px;
+  border: 1px solid #ffc529;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+  text-decoration: none;
+  width: 70%;
+}
+
+.Personalize p {
+  margin: 0;
+  padding: 0;
+}
+
+.Personalize:hover,
+.Personalize:active {
+  background: #ffeec1;
+  /* color: #fff; */
+}

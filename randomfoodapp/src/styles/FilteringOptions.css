@@ -1,0 +1,103 @@
+@import url(https://db.onlinewebfonts.com/c/0a6ee448d1bd65c56f6cf256a7c6f20a?family=Bahnschrift);
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bahnschrift', sans-serif; /* Adicionado fallback font */
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  /* height: 200vh; */
+}
+
+
+.FilteringOptions {
+  margin: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.categories{
+  width: 90%;
+  border: #ffd700 2px solid;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  /* margin-left: 5%;
+  margin-right: 5%; */
+  padding: 0 20px;
+}
+
+.options {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+  /* gap: 20px; */
+}
+
+.option {
+  display: flex;
+  flex: 1 1 calc(33.333% - 40px); /* Ajusta a base para que todos tenham a mesma proporção menos o gap */
+  justify-content: center; /* Centraliza o conteúdo dentro da opção */
+  align-items: center; /* Alinha verticalmente o conteúdo dentro da opção */
+  min-width: 150px;
+  max-width: 250px;
+  text-align: center;
+  padding: 10px; /* Adicionado padding para melhorar a visualização */
+  box-sizing: border-box; /* Garante que padding não afete as dimensões definidas */
+}
+
+.checkbox-input {
+  display: flex;
+  width: 100%; /* Faz o input ocupar toda a largura do seu container */
+  justify-content: center; /* Centraliza o input e o span horizontalmente */
+  align-items: center; /* Centraliza o input e o span verticalmente */
+}
+
+.checkbox-input span {
+  cursor: pointer;
+  padding: 10px 20px;
+  font-weight: 400;
+  background-color: #ffeec1;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center; /* Garante que o texto dentro do span está centralizado */
+  align-items: center; /* Alinha verticalmente o conteúdo do span */
+  width: 100%; /* Ocupa toda a largura do container para melhorar a acessibilidade */
+}
+
+.checkbox-input input[type="checkbox"] {
+  opacity: 0;
+  position: absolute; /* Remove o checkbox da flow para não ocupar espaço */
+  cursor: pointer; /* Indica que o elemento é clicável */
+}
+
+.checkbox-input span:hover {
+  background-color: #ffd700;
+}
+
+.checkbox-input input[type="checkbox"]:checked + span {
+  background-color: #ffd700;
+}
+
+label {
+  text-align: center;
+  width: 100%; /* Faz o label ocupar toda a largura do seu container */
+}
+
+.Surprise{
+  font-size: 24px;
+}
+
+@media (min-width: 768px){ /* Adicionado media query para telas maiores */
+  .FilteringOptions{
+    max-width: 800px;
+    font-family: 'Bahnschrift', sans-serif;
+  }
+}
