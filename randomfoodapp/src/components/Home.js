@@ -11,7 +11,9 @@ const Home = ({ userName }) => {
 
       <h2>O que vamos comer hoje?</h2>
       {/* Botão para acessar a página de seleção aleatória */}
-      <button className="Surprise">Me surpreenda</button>
+      <Link to="/surprise">
+  <button className="Surprise">Me surpreenda</button>
+</Link>
       {/* Botão para acessar a página de opções de filtragem */}
       <Link to="/filtering" className="Personalize"> 
         <svg
