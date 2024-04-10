@@ -36,27 +36,29 @@ const SurpriseSelection = () => {
   return (
     <div className="surprisePage">
       <div className="content">
-        <h2>Seleção Surpresa</h2>
+        {/* <h2>Seleção Surpresa</h2> */}
         {SurpriseSelection ? (
-          <div>
-            <p>
-              <strong>Nome:</strong> {SurpriseSelection.NOME}
+          <div className="card">
+            <p id="nome">
+              <strong>{SurpriseSelection.NOME}</strong> 
             </p>
-            <p>
+            <div className="infos">
+            <p className="info">
               <strong>Categoria:</strong> {SurpriseSelection.CATEGORIA}
             </p>
-            <p>
+            <p className="info">
               <strong>Preço Médio:</strong> {SurpriseSelection.PREÇO_MEDIO}
             </p>
-            <p>
+            <p className="info">
               <strong>Refeição:</strong> {SurpriseSelection.REFEIÇÃO}
             </p>
-            <p>
+            <p className="info">
               <strong>Localização:</strong> {SurpriseSelection.LOCALIZAÇÃO}
             </p>
           </div>
+          </div>
         ) : (
-          <p>Carregando restaurante aleatório...</p>
+          null
         )}
         </div>
       <div className="buttons">
@@ -70,18 +72,3 @@ const SurpriseSelection = () => {
 };
 
 export default SurpriseSelection;
-
-// import React from 'react';
-
-// const SurpriseSelection = ({ restaurant }) => {
-//   return (
-//     <div>
-//       <h2>Seleção Surpresa</h2>
-//       {/* Exibir detalhes do restaurante */}
-//       <button>Simbora!</button>
-//       <button>Que tal outro?</button>
-//     </div>
-//   );
-// }
-
-// export default SurpriseSelection;
