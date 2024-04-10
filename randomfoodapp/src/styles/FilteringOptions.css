@@ -1,18 +1,5 @@
 @import url(https://db.onlinewebfonts.com/c/0a6ee448d1bd65c56f6cf256a7c6f20a?family=Bahnschrift);
 
-body {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Bahnschrift', sans-serif; */
-  margin: 0;
-  padding: 0;
-  /* scroll-behavior: smooth; */
-  /* height: 200vh; */
-}
-
-
 .FilteringOptions {
   margin: 5%;
   display: flex;
@@ -94,13 +81,23 @@ label {
   width: 100%; /* Faz o label ocupar toda a largura do seu container */
 }
 
-.Surprise{
+.ShowSelections{
   font-size: 24px;
 }
 
+#showoptions{
+  background-color: #FFC529;
+  color: #ffffff;
+  font-size: 36px;
+}
+
+#showoptions:hover{
+  background-color: #FF9900;
+  box-shadow: 0 0 10px #FF9900;
+}
+
 @media (min-width: 768px){ /* Adicionado media query para telas maiores */
-  .FilteringOptions{
+  .options{
     max-width: 800px;
-    font-family: 'Bahnschrift', sans-serif;
-  }
+    }
 }

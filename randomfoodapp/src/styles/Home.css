@@ -22,7 +22,7 @@
 }
 
 .Surprise {
-  width: 80%;
+  width: 100%;
   color: #fff;
   font-family: Bahnschrift;
   font-size: 36px;
@@ -32,7 +32,7 @@
   border: none;
   border-radius: 50px;
   background: #ffc529;
-  padding: 10px 30px;
+  padding: 10px 80px;
   cursor: pointer;
 }
 
@@ -61,7 +61,7 @@
   flex-wrap: nowrap;
   gap: 10px;
   text-decoration: none;
-  width: 70%;
+  width: 350px;
 }
 
 .Personalize p {

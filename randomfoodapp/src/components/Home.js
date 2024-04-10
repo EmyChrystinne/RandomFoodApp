@@ -7,7 +7,7 @@ const Home = ({ userName }) => {
   return (
     <div className="Home">
       {/* Exibir o componente UserInfo */}
-      <UserInfo />
+      {/* <UserInfo /> */}
 
       <h2>O que vamos comer hoje?</h2>
       {/* Botão para acessar a página de seleção aleatória */}
