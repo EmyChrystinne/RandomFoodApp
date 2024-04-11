@@ -3,15 +3,18 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "../styles/Surprise.css";
 
+//const response = await axios.get('http://192.168.137.100:3001/api/restaurants/random');
+
+
 const SurpriseSelection = () => {
-  const [SurpriseSelection, setRandomRestaurant] = useState(null);
+  const [SurpriseSelection, setRandomRestaurant] = useState(null); //
 
   useEffect(() => {
     const fetchRandomRestaurant = async () => {
       console.log("fetchRandomRestaurant");
       try {
         const response = await axios.get(
-          "http://localhost:3001/api/restaurants/random"
+          "http://192.168.137.1:3001/api/restaurants/random"
         );
         setRandomRestaurant(response.data);
       } catch (error) {
@@ -25,7 +28,7 @@ const SurpriseSelection = () => {
   const handleRefresh = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/api/restaurants/random"
+        "http://192.168.0.2:3001/api/restaurants/random"
       );
       setRandomRestaurant(response.data);
     } catch (error) {
