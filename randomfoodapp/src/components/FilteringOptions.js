@@ -42,6 +42,7 @@ const FilteringOptions = () => {
     navigate("/filtered", { state: { route } }); // Passa a rota como uma propriedade para o componente ResultsPage
   };
 
+
   const categories = [
     { id: 1, name: "Refeição", options: ["Café da manhã", "Almoço", "Jantar"] },
     {
