@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Importe o hook useNavigate
 import UserInfo from "./UserInfo"; // Importe o componente UserInfo
 import "../styles/FilteringOptions.css"; // Importe o arquivo CSS
+import axios from "axios";
 
 const FilteringOptions = () => {
   const navigate = useNavigate(); // Inicialize o hook useNavigate
@@ -17,7 +18,7 @@ const FilteringOptions = () => {
     }));
   };
 
-  const showOptionsHandler = () => {
+  const showOptionsHandler = async () => {
     const selectedParams = Object.keys(selectedOptions).reduce(
       (acc, category) => {
         const selectedOpts = Object.keys(selectedOptions[category]).filter(
@@ -36,26 +37,26 @@ const FilteringOptions = () => {
       .flat()
       .join("&");
 
-    const route = `http://192.168.0.2:3001/api/restaurants/filter?${queryParams}`; // Caminho completo para o backend
-    console.log("Rota montada:", route);
-
-    navigate("/filtered", { state: { route } }); // Passa a rota como uma propriedade para o componente ResultsPage
+    const route = `http://localhost:3001/api/restaurants/filter?${queryParams}`; // Caminho completo para o backend
+    await axios.get(route).then((response) => {
+      
+      navigate("/filtered", { state: { route } }); // Passa a rota como uma propriedade para o componente ResultsPage
+    });
   };
-
 
   const categories = [
     { id: 1, name: "Refeição", options: ["Café da manhã", "Almoço", "Jantar"] },
     {
       id: 2,
-      name: "Preço Médio",
-      options: ["Até R$50", "R$50 - R$100", "R$100 - R$200", "Acima de R$200"],
+      name: "price",
+      options: ["UM", "R$50 - R$100", "R$100 - R$200", "Acima de R$200"],
     },
-    { id: 3, name: "Localização", options: ["Parte Baixa", "Parte Alta"] },
+    { id: 3, name: "location", options: ["BAIXA", "Parte Alta"] },
     {
       id: 4,
       name: "category",
       options: [
-        "Boteco",
+        "BOTECO",
         "Cafeteria",
         "Fast-food",
         "LANCHONETE",
@@ -84,7 +85,9 @@ const FilteringOptions = () => {
                       <input
                         type="checkbox"
                         checked={selectedOptions[category.name]?.[option]}
-                        onChange={() => handleOptionSelect(category.name, option)}
+                        onChange={() =>
+                          handleOptionSelect(category.name, option)
+                        }
                         className="checkbox"
                       />
                       <span>{option}</span>
@@ -96,7 +99,11 @@ const FilteringOptions = () => {
           </div>
         ))}
         {/* Botão para mostrar as opções selecionadas */}
-        <button className="button" id="showoptions" onClick={showOptionsHandler}>
+        <button
+          className="button"
+          id="showoptions"
+          onClick={showOptionsHandler}
+        >
           Me surpreenda
         </button>
       </div>
@@ -105,9 +112,6 @@ const FilteringOptions = () => {
 };
 
 export default FilteringOptions;
-
-
-
 
 // import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom"; // Importe o hook useNavigate
@@ -216,5 +220,3 @@ export default FilteringOptions;
 // };
 
 // export default FilteringOptions;
-
-

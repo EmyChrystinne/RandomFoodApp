@@ -14,7 +14,7 @@ const SurpriseSelection = () => {
       console.log("fetchRandomRestaurant");
       try {
         const response = await axios.get(
-          "http://192.168.137.1:3001/api/restaurants/random"
+          "http://localhost:3001/api/restaurants/random"
         );
         setRandomRestaurant(response.data);
       } catch (error) {
@@ -28,7 +28,7 @@ const SurpriseSelection = () => {
   const handleRefresh = async () => {
     try {
       const response = await axios.get(
-        "http://192.168.0.2:3001/api/restaurants/random"
+        "http://localhost:3001/api/restaurants/random"
       );
       setRandomRestaurant(response.data);
     } catch (error) {
