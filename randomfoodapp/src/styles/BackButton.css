@@ -6,7 +6,7 @@
   border: solid 2px #ffc529;
   border-radius: 0px 50px 50px 0px;
   background: #fff;
-  position: fixed;
+  position: absolute;
   top: 50px;
   left: 0;
   font-size: 20px;

@@ -8,6 +8,7 @@
   font-family: 'Bahnschrift', sans-serif; /* Adicionado fallback font */
   scroll-behavior: smooth;
   padding-top: 40px;
+  background-color: #F3F3F3;
   
 }
 
@@ -26,7 +27,7 @@
   margin-bottom: 20px;
   /* margin-left: 5%;
   margin-right: 5%; */
-  padding: 0 20px;
+  padding: 0 10px;
   gap: 10px;
 }
 
@@ -126,5 +127,9 @@ label {
 @media (min-width: 768px){ /* Adicionado media query para telas maiores */
   .options{
     max-width: 800px;
+    }
+
+    .categories{
+      padding: 20px;
     }
 }
