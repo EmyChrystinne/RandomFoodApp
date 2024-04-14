@@ -70,7 +70,6 @@ const FilteringOptions = () => {
 
   return (
     <div className="FilteringOptions">
-      <UserInfo />
       <div className="options">
         <h2>Personalize suas opções</h2>
         {categories.map((category) => (
