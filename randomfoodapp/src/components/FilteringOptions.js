@@ -4,8 +4,8 @@ import "../styles/FilteringOptions.css"; // Importe o arquivo CSS
 import axios from "axios";
 
 
-const API = process.env.NEXT_PUBLIC_API_URL;
 const FilteringOptions = () => {
+  const API = process.env.NEXT_PUBLIC_API_URL;
   const navigate = useNavigate(); // Inicialize o hook useNavigate
   const [selectedOptions, setSelectedOptions] = useState({});
 

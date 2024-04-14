@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { useLocation } from 'react-router-dom'; // Importe o hook useLocation
 
 
-const API = process.env.NEXT_PUBLIC_API_URL;
 const ResultsPage = () => {
+  const API = process.env.NEXT_PUBLIC_API_URL;
   const location = useLocation(); // Obtenha a localização usando useLocation
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [loading, setLoading] = useState(true);

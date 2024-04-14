@@ -3,8 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "../styles/Surprise.css";
 
-const API = process.env.NEXT_PUBLIC_API_URL
 const SurpriseSelection = () => {
+  const API = process.env.NEXT_PUBLIC_API_URL
   const [SurpriseSelection, setRandomRestaurant] = useState(null); //
 
   useEffect(() => {
