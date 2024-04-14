@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "../styles/Surprise.css";
 
 const SurpriseSelection = () => {
-  const API = process.env.NEXT_PUBLIC_API_URL
+  const API = process.env.REACT_APP_URL
   const [SurpriseSelection, setRandomRestaurant] = useState(null); //
 
   useEffect(() => {

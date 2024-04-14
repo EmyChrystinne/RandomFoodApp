@@ -5,7 +5,7 @@ import axios from "axios";
 
 
 const FilteringOptions = () => {
-  const API = process.env.NEXT_PUBLIC_API_URL;
+  const API = process.env.REACT_APP_URL;
   const navigate = useNavigate(); // Inicialize o hook useNavigate
   const [selectedOptions, setSelectedOptions] = useState({});
 
