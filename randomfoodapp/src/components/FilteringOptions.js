@@ -44,7 +44,7 @@ const FilteringOptions = () => {
   };
 
   const categories = [
-    { id: 1, name: "Refeição", options: ["Café da manhã", "ALMOÇO", "Jantar"] },
+    { id: 1, name: "Refeição", options: ["Café da Manhã", "Almoço", "Jantar"] },
     {
       id: 2,
       name: "Preço",
@@ -61,9 +61,9 @@ const FilteringOptions = () => {
         "Lanchonete",
         "Padaria",
         "Restaurante",
-        "Avestruz",
+        "Pizza",
         "Sorveteria",
-        "Outro",
+        
       ],
     },
   ];
