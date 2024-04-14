@@ -2,49 +2,41 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Importe o hook useNavigate
 import "../styles/FilteringOptions.css"; // Importe o arquivo CSS
 import axios from "axios";
-
+import BackButton from "./BackButton";
+import Logo from "../assets/RandomFood Logo.svg";
 
 const FilteringOptions = () => {
-  const API = process.env.REACT_APP_URL;
-  const navigate = useNavigate(); // Inicialize o hook useNavigate
-  const [selectedOptions, setSelectedOptions] = useState({});
+  const API = process.env.REACT_APP_URL; // URL da API fornecida pelo ambiente
+  const navigate = useNavigate(); // Inicialize o hook useNavigate para navegação programática
+  const [selectedOptions, setSelectedOptions] = useState({}); // Estado para armazenar opções selecionadas
 
+  // Atualiza o estado com a opção selecionada para a categoria (garante apenas uma opção por categoria)
   const handleOptionSelect = (category, option) => {
     setSelectedOptions((prevState) => ({
       ...prevState,
-      [category]: {
-        ...(prevState[category] || {}),
-        [option]: !prevState[category]?.[option],
-      },
+      [category]: option,
     }));
   };
 
+  // Manipulador para mostrar opções selecionadas e navegar para a página de resultados filtrados
   const showOptionsHandler = async () => {
-    const selectedParams = Object.keys(selectedOptions).reduce(
-      (acc, category) => {
-        const selectedOpts = Object.keys(selectedOptions[category]).filter(
-          (opt) => selectedOptions[category][opt]
-        );
-        if (selectedOpts.length > 0) {
-          acc[category] = selectedOpts;
-        }
-        return acc;
-      },
-      {}
-    );
-
-    const queryParams = Object.entries(selectedParams)
-      .map(([category, options]) => options.map((opt) => `${category}=${opt}`))
-      .flat()
+    const queryParams = Object.keys(selectedOptions)
+      .filter((category) => selectedOptions[category] !== "") // Filtra categorias sem opção selecionada
+      .map((category) => `${category}=${selectedOptions[category]}`)
       .join("&");
 
-    const route = `${API}/restaurants/filter?${queryParams}`; // Caminho completo para o backend
-    await axios.get(route).then((response) => {
-      
-      navigate("/filtered", { state: { route } }); // Passa a rota como uma propriedade para o componente ResultsPage
-    });
+    if (queryParams) {
+      const route = `${API}/restaurants/filter?${queryParams}`;
+      await axios.get(route).then((response) => {
+        navigate("/filtered", { state: { route } });
+      });
+    } else {
+      // Handle caso nenhum filtro tenha sido selecionado
+      console.log("Por favor, selecione pelo menos uma opção.");
+    }
   };
 
+  // Definição das categorias e opções disponíveis
   const categories = [
     { id: 1, name: "Refeição", options: ["Café da Manhã", "Almoço", "Jantar"] },
     {
@@ -65,15 +57,18 @@ const FilteringOptions = () => {
         "Restaurante",
         "Pizza",
         "Sorveteria",
-        
       ],
     },
   ];
 
   return (
     <div className="FilteringOptions">
+      <BackButton />
       <div className="options">
-        <h2>Personalize suas opções</h2>
+        <div className="header">
+          <img src={Logo} alt="RandomFood Logo" />
+          <h2>Personalize suas opções</h2>
+        </div>
         {categories.map((category) => (
           <div key={category.id} className="categories">
             <div className="Categoria">
@@ -81,14 +76,15 @@ const FilteringOptions = () => {
               <div className="options">
                 {category.options.map((option) => (
                   <div key={option} className="option">
-                    <label className="checkbox-input">
+                    <label className="radio-input">
                       <input
-                        type="checkbox"
-                        checked={selectedOptions[category.name]?.[option]}
+                        type="radio"
+                        name={category.name}
+                        checked={selectedOptions[category.name] === option}
                         onChange={() =>
                           handleOptionSelect(category.name, option)
                         }
-                        className="checkbox"
+                        className="radio"
                       />
                       <span>{option}</span>
                     </label>

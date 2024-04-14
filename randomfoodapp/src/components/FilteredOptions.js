@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { useLocation } from 'react-router-dom'; // Importe o hook useLocation
+import BackButton from './BackButton';
 
 
 const ResultsPage = () => {
@@ -45,6 +46,7 @@ const ResultsPage = () => {
         <p>Carregando...</p>
       ) :
           <div className="surprisePage">
+            <BackButton />
             <div className="content">
               {/* <h2>Seleção Surpresa</h2> */}
               {filteredRestaurants ? (

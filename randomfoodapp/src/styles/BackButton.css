@@ -1,0 +1,21 @@
+.backButton button {
+  display: inline-flex;
+  padding: 4px 11px;
+  align-items: center;
+  gap: 10px;
+  border: solid 2px #ffc529;
+  border-radius: 0px 50px 50px 0px;
+  background: #fff;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  font-size: 20px;
+  font-family: Bahnschrift;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.backButton button:hover{
+    font-size: 22px;
+    box-shadow: 0px 0px 5px 0px #3b3b3b;
+}

@@ -1,18 +1,21 @@
 @import url(https://db.onlinewebfonts.com/c/0a6ee448d1bd65c56f6cf256a7c6f20a?family=Bahnschrift);
 
+* {
+  margin: 0;
+  padding: 0;}
+
 .Home {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  gap: 20px;
+  gap: 40px;
   font-family: "Bahnschrift";
   background-color: #F3F3F3;
 }
 
 .Home h2 {
-  margin: 10%;
   color: #000;
   text-align: center;
   font-family: Bahnschrift;
@@ -20,6 +23,20 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+
+.Home img{
+  width: 100%;
+  max-width: 200px;
+  padding: 0;
+  margin: 0;
+}
+
+.botoes{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 40px;
 }
 
 .Surprise {
@@ -85,4 +102,6 @@
     width: 350px;
     font-size: 30px;
   }
+
+
 }
