@@ -12,7 +12,7 @@ const App = () => {
         {/* Configuração das rotas */}
         <Routes>
           {/* Rota para a página inicial*/}
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           {/* Rota para a página de seleção surpresa */}
           <Route path="/surprise" element={<SurpriseSelection />} />
           {/* Rota para a página de opções de filtragem */}
