@@ -28,7 +28,7 @@ const SurpriseSelection = () => {
   const handleRefresh = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/api/restaurants/random"
+        "http://192.168.0.13:3001/api/restaurants/random"
       );
       setRandomRestaurant(response.data);
     } catch (error) {
@@ -47,16 +47,16 @@ const SurpriseSelection = () => {
             </p>
             <div className="infos">
             <p className="info">
-              <strong>Categoria:</strong> {SurpriseSelection.CATEGORIA}
+              <strong>Categoria:</strong> {SurpriseSelection.Categoria}
             </p>
             <p className="info">
-              <strong>Preço Médio:</strong> {SurpriseSelection.PREÇO_MEDIO}
+              <strong>Preço Médio:</strong> {SurpriseSelection.Preço}
             </p>
             <p className="info">
-              <strong>Refeição:</strong> {SurpriseSelection.REFEIÇÃO}
+              <strong>Refeição:</strong> {SurpriseSelection.Refeição}
             </p>
             <p className="info">
-              <strong>Localização:</strong> {SurpriseSelection.LOCALIZAÇÃO}
+              <strong>Localização:</strong> {SurpriseSelection.Localização}
             </p>
           </div>
           </div>

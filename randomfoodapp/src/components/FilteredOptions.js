@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 import { useLocation } from 'react-router-dom'; // Importe o hook useLocation
 
 const ResultsPage = ({ userName }) => {
@@ -18,7 +19,7 @@ const ResultsPage = ({ userName }) => {
     
     const fetchFilteredRestaurants = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/restaurants/restaurantRoute');
+        const response = await axios.get('http://192.168.0.13:3001/api/restaurants/restaurantRoute');
         setFilteredRestaurants(response.data);
         setLoading(false);
         if (response.data.length === 0) {
@@ -32,6 +33,9 @@ const ResultsPage = ({ userName }) => {
 
     fetchFilteredRestaurants();
   }, [location]);
+  const atualizarPagina = () => {
+    window.location.reload();
+  };
 
   return (
     <div>
@@ -48,22 +52,29 @@ const ResultsPage = ({ userName }) => {
                   </p>
                   <div className="infos">
                   <p className="info">
-                    <strong>Categoria:</strong> {filteredRestaurants.CATEGORIA}
+                    <strong>Categoria:</strong> {filteredRestaurants.Categoria}
                   </p>
                   <p className="info">
-                    <strong>Preço Médio:</strong> {filteredRestaurants.PREÇO_MEDIO}
+                    <strong>Preço Médio:</strong> {filteredRestaurants.Preço}
                   </p>
                   <p className="info">
-                    <strong>Refeição:</strong> {filteredRestaurants.REFEIÇÃO}
+                    <strong>Refeição:</strong> {filteredRestaurants.Refeição}
                   </p>
                   <p className="info">
-                    <strong>Localização:</strong> {filteredRestaurants.LOCALIZAÇÃO}
+                    <strong>Localização:</strong> {filteredRestaurants.Localização}
                   </p>
                 </div>
                 </div>
               ) : (
                 null
               )}
+              
+              </div>
+              <div className="buttons">
+                <Link to="/home">
+                   <button id="go" className="button">SIMBORA!</button>
+                </Link>
+                  <button onClick= {atualizarPagina} className="button" id="outro">Que tal outro?</button>
               </div>
             </div>
       }

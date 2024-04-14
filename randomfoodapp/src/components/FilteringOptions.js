@@ -37,7 +37,7 @@ const FilteringOptions = () => {
       .flat()
       .join("&");
 
-    const route = `http://localhost:3001/api/restaurants/filter?${queryParams}`; // Caminho completo para o backend
+    const route = `http://192.168.0.13:3001/api/restaurants/filter?${queryParams}`; // Caminho completo para o backend
     await axios.get(route).then((response) => {
       
       navigate("/filtered", { state: { route } }); // Passa a rota como uma propriedade para o componente ResultsPage
@@ -45,24 +45,24 @@ const FilteringOptions = () => {
   };
 
   const categories = [
-    { id: 1, name: "Refeição", options: ["Café da manhã", "Almoço", "Jantar"] },
+    { id: 1, name: "Refeição", options: ["Café da manhã", "ALMOÇO", "Jantar"] },
     {
       id: 2,
-      name: "price",
-      options: ["UM", "R$50 - R$100", "R$100 - R$200", "Acima de R$200"],
+      name: "Preço",
+      options: ["Até R$50", "R$50-R$100", "R$100-R$200", "Acima de R$200"],
     },
-    { id: 3, name: "location", options: ["BAIXA", "Parte Alta"] },
+    { id: 3, name: "Localização", options: ["Parte Baixa", "Parte Alta"] },
     {
       id: 4,
-      name: "category",
+      name: "Categoria",
       options: [
-        "BOTECO",
+        "Boteco",
         "Cafeteria",
         "Fast-food",
-        "LANCHONETE",
+        "Lanchonete",
         "Padaria",
         "Restaurante",
-        "Rodízio",
+        "Avestruz",
         "Sorveteria",
         "Outro",
       ],
@@ -76,7 +76,7 @@ const FilteringOptions = () => {
         <h2>Personalize suas opções</h2>
         {categories.map((category) => (
           <div key={category.id} className="categories">
-            <div className="category">
+            <div className="Categoria">
               <h3>{category.name}</h3>
               <div className="options">
                 {category.options.map((option) => (
