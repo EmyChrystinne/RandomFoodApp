@@ -19,7 +19,7 @@ const ResultsPage = () => {
     
     const fetchFilteredRestaurants = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/restaurants/restaurantRoute');
+        const response = await axios.get(`${API}/restaurants/restaurantRoute`);
         setFilteredRestaurants(response.data);
         setLoading(false);
         if (response.data.length === 0) {

@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom"; // Importe o hook useNavigate
 import "../styles/FilteringOptions.css"; // Importe o arquivo CSS
 import axios from "axios";
 
+
+const API = process.env.NEXT_PUBLIC_API_URL;
 const FilteringOptions = () => {
   const navigate = useNavigate(); // Inicialize o hook useNavigate
   const [selectedOptions, setSelectedOptions] = useState({});
@@ -36,7 +38,7 @@ const FilteringOptions = () => {
       .flat()
       .join("&");
 
-    const route = `http://localhost:3001/api/restaurants/filter?${queryParams}`; // Caminho completo para o backend
+    const route = `${API}/restaurants/filter?${queryParams}`; // Caminho completo para o backend
     await axios.get(route).then((response) => {
       
       navigate("/filtered", { state: { route } }); // Passa a rota como uma propriedade para o componente ResultsPage
