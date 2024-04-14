@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import { useLocation } from 'react-router-dom'; // Importe o hook useLocation
 
-const ResultsPage = ({ userName }) => {
+const ResultsPage = () => {
   const location = useLocation(); // Obtenha a localização usando useLocation
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,7 +19,7 @@ const ResultsPage = ({ userName }) => {
     
     const fetchFilteredRestaurants = async () => {
       try {
-        const response = await axios.get('http://192.168.0.13:3001/api/restaurants/restaurantRoute');
+        const response = await axios.get('http://localhost:3001/api/restaurants/restaurantRoute');
         setFilteredRestaurants(response.data);
         setLoading(false);
         if (response.data.length === 0) {

@@ -28,7 +28,7 @@ const SurpriseSelection = () => {
   const handleRefresh = async () => {
     try {
       const response = await axios.get(
-        "http://192.168.0.13:3001/api/restaurants/random"
+        "http://localhost:3001/api/restaurants/random"
       );
       setRandomRestaurant(response.data);
     } catch (error) {

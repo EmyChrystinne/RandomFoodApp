@@ -1,21 +1,17 @@
 import React from "react";
 import "../styles/Home.css"; // Importe o arquivo CSS
-import UserInfo from "./UserInfo"; // Importe o componente UserInfo
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-const Home = ({ userName }) => {
+const Home = () => {
   return (
     <div className="Home">
-      {/* Exibir o componente UserInfo */}
-      {/* <UserInfo /> */}
-
       <h2>O que vamos comer hoje?</h2>
       {/* Botão para acessar a página de seleção aleatória */}
       <Link to="/surprise">
-  <button className="Surprise">Me surpreenda</button>
-</Link>
+        <button className="Surprise">Me surpreenda</button>
+      </Link>
       {/* Botão para acessar a página de opções de filtragem */}
-      <Link to="/filtering" className="Personalize"> 
+      <Link to="/filtering" className="Personalize">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="26"
@@ -48,7 +44,7 @@ const Home = ({ userName }) => {
           />
         </svg>
         <p>Personalize Opções</p>
-        </Link>
+      </Link>
     </div>
   );
 };

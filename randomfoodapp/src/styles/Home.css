@@ -8,6 +8,7 @@
   height: 100vh;
   gap: 20px;
   font-family: "Bahnschrift";
+  background-color: #F3F3F3;
 }
 
 .Home h2 {
@@ -25,14 +26,14 @@
   width: 100%;
   color: #fff;
   font-family: Bahnschrift;
-  font-size: 36px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   border: none;
   border-radius: 50px;
   background: #ffc529;
-  padding: 10px 80px;
+  padding: 10px 70px;
   cursor: pointer;
 }
 
@@ -45,7 +46,7 @@
   color: #ffc529;
   padding: 10px 20px;
   font-family: Bahnschrift;
-  font-size: 24px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -61,7 +62,7 @@
   flex-wrap: nowrap;
   gap: 10px;
   text-decoration: none;
-  width: 350px;
+  width: 250px;
 }
 
 .Personalize p {
@@ -73,4 +74,15 @@
 .Personalize:active {
   background: #ffeec1;
   /* color: #fff; */
+}
+
+@media screen and (min-width: 768px){
+  .Surprise{
+    width: 400px;
+    font-size: 34px;
+  }
+  .Personalize{
+    width: 350px;
+    font-size: 30px;
+  }
 }
