@@ -78,7 +78,9 @@ const ResultsPage = () => {
                 <Link to="/home">
                    <button id="go" className="button">SIMBORA!</button>
                 </Link>
-                  <button onClick= {atualizarPagina} className="button" id="outro">Que tal outro?</button>
+                <Link to="/filtering">
+                  <button className="button" id="outro">Que tal outro?</button>
+                </Link>
               </div>
             </div>
       }
