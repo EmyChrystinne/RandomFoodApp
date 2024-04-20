@@ -1,97 +1,49 @@
-.login{
+@import url(https://db.onlinewebfonts.com/c/0a6ee448d1bd65c56f6cf256a7c6f20a?family=Bahnschrift);
+
+#LoginPage {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-    align-items: center;
     height: 100vh;
-    background-color: #f5f5f5;
     gap: 40px;
-    text-align: center;
-}
+  }
 
-.login .textos h1{
-    font-size: 2.5rem;
-    font-weight: bold;
-}
-
-.login  .textos p{
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: #FF9900;
-    max-width: 400px;
-}
-
-.dados{
+.Infos {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    margin: 0 5%;
-    max-width: 500px;
-    padding: 40px 0;
-}
+    justify-content: center;
+    gap: 40px;
+    width: 90%;
+    
+  }
 
-.campo{
-  font-size: 16px;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    border: 1.5px dashed #FF9900;
-    box-shadow: 0 2px rgba(117, 117, 117, 0.1);
-    border-radius: 20px;
-    padding: 5px 20px;
-}
+    .Infos h1 {
+        font-family: 'Bahnschrift';
+        font-size: 36px;
+        color: #F90;
+        text-align: center;
 
-.enviar{
+    }
+  
+  .Login {
+    font-family: 'Bahnschrift';
+    margin-top: 20px;
     padding: 10px 20px;
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: #fff;
-    background-color: #FFC529;
+    font-size: 16px;
     border: none;
-    border-radius: 30px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s;
-    text-decoration: none;
-    width: 250px;
-    box-shadow: 0 2px rgba(117, 117, 117, 0.2);
-}
+  }
 
-.enviar:hover{
-    background-color: #FF9900;
-}
-
-.links{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin: 0 5%;
-    max-width: 500px;
-}
-
-.links a{
-    font-weight: 500;
-    color: #FF9900;
-    text-decoration: none;
-}
-
-.redefinir{
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #fff;
-  background-color: #FFC529;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  text-decoration: none;
-  box-shadow: 0 2px rgba(117, 117, 117, 0.2);
-  margin-top: 40px;
-}
-
-.redefinir:hover{
-  background-color: #FF9900;
-}
+    .Login:active {
+        background-color: #0056b3;
+    }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
