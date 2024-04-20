@@ -64,7 +64,7 @@ const SurpriseSelection = () => {
         )}
         </div>
       <div className="buttons">
-        <Link to="/">
+        <Link to="/home">
           <button id="go" className="button">SIMBORA!</button>
         </Link>
         <button onClick={handleRefresh} className="button" id="outro">Que tal outro?</button>
