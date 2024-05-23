@@ -51,10 +51,6 @@ const Home = () => {
           <p>Personalize Opções</p>
         </Link>
       </div>
-      <div className="sugestion">
-        <p>Não encontrou o que queria?</p>
-        <a href="https://forms.gle/S4esvWkmWW2tEVYb8"> Sugira um estabelecimento!</a>
-        </div>
     </div>
   );
 };
