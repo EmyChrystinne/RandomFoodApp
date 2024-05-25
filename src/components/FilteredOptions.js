@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import { useLocation } from 'react-router-dom'; // Importe o hook useLocation
 import BackButton from './BackButton';
-
+import Footer from './Footer';
 
 const ResultsPage = () => {
   const API = process.env.REACT_APP_URL;
@@ -80,6 +80,7 @@ const ResultsPage = () => {
                 </Link>
                   <button onClick= {atualizarPagina} className="button" id="outro">Que tal outro?</button>
               </div>
+              <Footer />
             </div>
       }
     </div>

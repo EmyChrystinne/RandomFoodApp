@@ -4,6 +4,7 @@ import "../styles/FilteringOptions.css"; // Importe o arquivo CSS
 import axios from "axios";
 import BackButton from "./BackButton";
 import Logo from "../assets/RandomFood Logo.svg";
+import Footer from "./Footer";
 
 const FilteringOptions = () => {
   const API = process.env.REACT_APP_URL; // URL da API fornecida pelo ambiente
@@ -103,6 +104,7 @@ const FilteringOptions = () => {
           Me surpreenda
         </button>
       </div>
+      <Footer />
     </div>
   );
 };
