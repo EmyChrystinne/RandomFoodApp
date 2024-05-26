@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Welcome.css";
 import Logo from "../assets/RandomFood Logo.svg";
+import Footer from "./Footer";
 
 const Welcome = () => {
   return (
@@ -19,6 +20,11 @@ const Welcome = () => {
           Registrar
         </Link>
       </div>
+      <div className="sugestion">
+        <p>Não encontrou o que queria?</p>
+        <a href="https://forms.gle/S4esvWkmWW2tEVYb8" target="_blank" rel="noopener noreferrer"> Sugira um estabelecimento!</a>
+        </div>
+        <Footer/>
     </div>
   );
 };

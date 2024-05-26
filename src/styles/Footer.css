@@ -1,0 +1,13 @@
+.copyright{
+    padding-bottom: 20px;
+    }
+    
+    .copyright a{
+        color: #5e5e5e;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+    
+    .copyright a:hover{
+        color: #f90;
+    }

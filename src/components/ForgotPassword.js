@@ -4,6 +4,8 @@ import { auth } from "../firebase/firebaseConfig";
 import "../styles/Login.css";
 import Logo from "../assets/RandomFood Logo.svg";
 import BackButton from "./BackButton";
+import Footer from "./Footer";
+
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -50,6 +52,8 @@ const ForgotPassword = () => {
           Enviar E-mail de Redefinição
         </button>
       </form>
+      <Footer />
+
     </div>
   );
 };

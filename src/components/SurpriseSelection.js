@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "../styles/Surprise.css";
 import BackButton from "./BackButton.js";
+import Footer from "./Footer";
 
 const SurpriseSelection = () => {
   const API = process.env.REACT_APP_URL
@@ -69,6 +70,7 @@ const SurpriseSelection = () => {
         </Link>
         <button onClick={handleRefresh} className="button" id="outro">Que tal outro?</button>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'; // Importe useNavigate
 import "../styles/Login.css";
 import Logo from "../assets/RandomFood Logo.svg";
 import BackButton from './BackButton';
+import Footer from './Footer';
 
 function Signup() {
   const navigate = useNavigate(); // Inicialize o hook useNavigate
@@ -65,6 +66,7 @@ function Signup() {
           Já possui uma conta? <a href="/login">Entre aqui!</a>
         </p>
       </div>
+      <Footer />
     </div>
   );
 }
