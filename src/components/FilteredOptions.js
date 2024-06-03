@@ -1,41 +1,86 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom"; // Importe o hook useLocation
+import { Link, useLocation } from "react-router-dom";
 import BackButton from "./BackButton";
 import Footer from "./Footer";
 
-const ResultsPage = () => {
-  const API = process.env.REACT_APP_URL;
+const FilteredOptions = () => {
   const location = useLocation(); // Obtenha a localização usando useLocation
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]); // Estado para armazenar restaurantes filtrados
+  const [loading, setLoading] = useState(true); // Estado para controlar o carregamento
 
   useEffect(() => {
-    const selectedParams = location.state.selectedParams; // Acesse os parâmetros selecionados da localização
-
-    console.log({
-      selectedParams,
-    });
-
     const fetchFilteredRestaurants = async () => {
       try {
-        const response = await axios.get(`${API}/restaurants/restaurantRoute`);
-        setFilteredRestaurants(response.data);
-        setLoading(false);
-        if (response.data.length === 0) {
-          alert("Nenhum restaurante encontrado com os filtros selecionados.");
-          window.history.back(); // Retorna à página anterior
+        const { route } = location.state || {};
+        if (route) {
+          const response = await axios.get(route);
+          console.log("Resposta da API:", response.data); // Log para depuração
+
+          // Verifica se a resposta é um array
+          if (Array.isArray(response.data)) {
+            setFilteredRestaurants(response.data);
+          } else if (
+            typeof response.data === "object" &&
+            response.data !== null
+          ) {
+            setFilteredRestaurants([response.data]);
+          } else {
+            setFilteredRestaurants([]);
+            console.error(
+              "Resposta inesperada da API, esperado um array ou objeto:",
+              response.data
+            );
+          }
+
+          setLoading(false);
+        } else {
+          alert("Parâmetros de filtro ausentes.");
+          window.history.back();
         }
       } catch (error) {
-        console.error("Erro ao obter restaurantes filtrados:", error);
+        if (error.response) {
+          // Erro de resposta da API com código de status
+          if (error.response.status === 404) {
+            alert(
+              "Desculpe, não encontramos nenhum restaurante que corresponda aos seus critérios de filtro. Por favor, tente novamente com diferentes opções."
+            );
+          } else if (error.response.status === 500) {
+            alert(
+              "Ocorreu um problema ao processar sua solicitação. Por favor, tente novamente mais tarde."
+            );
+          } else {
+            alert(
+              "Algo deu errado ao buscar os restaurantes. Por favor, tente novamente."
+            );
+          }
+        } else if (error.request) {
+          // Erro de requisição feita, mas sem resposta recebida
+          console.error("Erro de requisição:", error.request);
+          alert(
+            "Não foi possível obter uma resposta do servidor. Por favor, verifique sua conexão com a internet e tente novamente."
+          );
+        } else {
+          // Erro de configuração do Axios ou erro geral
+          console.error("Erro:", error.message);
+          alert(
+            "Algo deu errado ao processar sua solicitação. Por favor, tente novamente."
+          );
+        }
+        setFilteredRestaurants([]); // Garante que filteredRestaurants seja um array em caso de erro
+        setLoading(false);
       }
     };
 
     fetchFilteredRestaurants();
-  }, [location]);
-  const atualizarPagina = () => {
-    window.location.reload();
+  }, [location.state]);
+
+  const handleGoToGoogleMaps = (restaurantName) => {
+    const encodedName = encodeURIComponent(restaurantName);
+    window.open(
+      `https://www.google.com.br/maps/search/${encodedName}`,
+      "_blank"
+    );
   };
 
   return (
@@ -46,36 +91,61 @@ const ResultsPage = () => {
         <div className="surprisePage">
           <BackButton />
           <div className="content">
-            {/* <h2>Seleção Surpresa</h2> */}
-            {filteredRestaurants ? (
-              <div className="card">
-                <p id="nome">
-                  <strong>{filteredRestaurants.NOME}</strong>
+            {filteredRestaurants.length === 0 ? (
+              <div className="noResultsMessage">
+                <p>
+                  Não há resultados para esse filtro! Tente outras opções e/ou 
+                  <a
+                    href="https://forms.gle/2pqxMnoXfJqF5ftCA"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                  sugira um estabelecimento para gente!
+                  </a>{" "}
                 </p>
-                <div className="infos">
-                  <p className="info">
-                    <strong>Categoria:</strong> {filteredRestaurants.Categoria}
-                  </p>
-                  <p className="info">
-                    <strong>Preço Médio:</strong> {filteredRestaurants.Preço}
-                  </p>
-                  <p className="info">
-                    <strong>Refeição:</strong> {filteredRestaurants.Refeição}
-                  </p>
-                  <p className="info">
-                    <strong>Localização:</strong>{" "}
-                    {filteredRestaurants.Localização}
-                  </p>
-                </div>
               </div>
-            ) : null}
+            ) : (
+              filteredRestaurants.map((restaurant) => (
+                <div key={restaurant.id} className="card">
+                  <p id="nome">
+                    <strong>{restaurant.nome}</strong>
+                  </p>
+                  <div className="infos">
+                    <p className="info">
+                      <strong>Categoria:</strong> {restaurant.categoria}
+                    </p>
+                    <p className="info">
+                      <strong>Preço Médio:</strong> {restaurant.preco}
+                    </p>
+                    <p className="info">
+                      <strong>Refeição:</strong>{" "}
+                      {Array.isArray(restaurant.refeicao)
+                        ? restaurant.refeicao.join(", ")
+                        : restaurant.refeicao}
+                    </p>
+                    <p className="info">
+                      <strong>Localização:</strong>{" "}
+                      {Array.isArray(restaurant.localizacao)
+                        ? restaurant.localizacao.join(", ")
+                        : restaurant.localizacao}
+                    </p>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
           <div className="buttons">
-            <Link to="/home">
-              <button id="go" className="button">
+            {filteredRestaurants.length > 0 && (
+              <button
+                onClick={() =>
+                  handleGoToGoogleMaps(filteredRestaurants[0].nome)
+                }
+                className="button"
+                id="go"
+              >
                 SIMBORA!
               </button>
-            </Link>
+            )}
             <Link to="/filtering">
               <button className="button" id="outro">
                 Que tal outro?
@@ -88,4 +158,5 @@ const ResultsPage = () => {
     </div>
   );
 };
-export default ResultsPage;
+
+export default FilteredOptions;
