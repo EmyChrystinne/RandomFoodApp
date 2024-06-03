@@ -55,7 +55,7 @@ const FilteringOptions = () => {
       options: [
         "Boteco",
         "Cafeteria",
-        "Fast-food",
+        "Fast-Food",
         "Lanchonete",
         "Padaria",
         "Restaurante",
