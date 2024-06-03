@@ -1,14 +1,17 @@
+// src/components/FilteringOptions.js
+
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Importe o hook useNavigate
-import "../styles/FilteringOptions.css"; // Importe o arquivo CSS
+import { Link, useNavigate } from "react-router-dom";
+import "../styles/FilteringOptions.css";
 import axios from "axios";
 import BackButton from "./BackButton";
 import Logo from "../assets/RandomFood Logo.svg";
 import Footer from "./Footer";
 
+const API = process.env.REACT_APP_URL; // URL da API fornecida pelo ambiente
+
 const FilteringOptions = () => {
-  const API = process.env.REACT_APP_URL; // URL da API fornecida pelo ambiente
-  const navigate = useNavigate(); // Inicialize o hook useNavigate para navegação programática
+  const navigate = useNavigate(); // Hook useNavigate para navegação programática
   const [selectedOptions, setSelectedOptions] = useState({}); // Estado para armazenar opções selecionadas
 
   // Atualiza o estado com a opção selecionada para a categoria (garante apenas uma opção por categoria)
@@ -32,27 +35,27 @@ const FilteringOptions = () => {
         navigate("/filtered", { state: { route } });
       });
     } else {
-      // Handle caso nenhum filtro tenha sido selecionado
-      console.log("Por favor, selecione pelo menos uma opção.");
+      // Se nenhum filtro foi selecionado, exibe uma mensagem para o usuário
+      alert("Por favor, selecione pelo menos uma opção.");
     }
   };
 
   // Definição das categorias e opções disponíveis
   const categories = [
-    { id: 1, name: "Refeição", options: ["Café da Manhã", "Almoço", "Jantar"] },
+    { id: 1, name: "refeicao", options: ["Café da Manhã", "Almoço", "Jantar"] },
     {
       id: 2,
-      name: "Preço",
+      name: "preco",
       options: ["Até R$50", "R$50-R$100", "R$100-R$200", "Acima de R$200"],
     },
-    { id: 3, name: "Localização", options: ["Parte Baixa", "Parte Alta"] },
+    { id: 3, name: "localizacao", options: ["Parte Baixa", "Parte Alta"] },
     {
       id: 4,
-      name: "Categoria",
+      name: "categoria",
       options: [
         "Boteco",
         "Cafeteria",
-        "Fast-food",
+        "Fast-Food",
         "Lanchonete",
         "Padaria",
         "Restaurante",
@@ -62,18 +65,29 @@ const FilteringOptions = () => {
     },
   ];
 
+  // Mapeamento dos nomes corrigidos das categorias
+
+  const categoryNames = {
+    refeicao: "Refeição",
+    preco: "Preço",
+    localizacao: "Localização",
+    categoria: "Categoria",
+  };
+
   return (
     <div className="FilteringOptions">
       <BackButton />
       <div className="options">
         <div className="header">
-          <img src={Logo} alt="RandomFood Logo" />
+          <Link to="/home">
+            <img src={Logo} alt="RandomFood Logo" />
+          </Link>
           <h2>Personalize suas opções</h2>
         </div>
         {categories.map((category) => (
           <div key={category.id} className="categories">
             <div className="Categoria">
-              <h3>{category.name}</h3>
+              <h3>{categoryNames[category.name]}</h3>{" "}
               <div className="options">
                 {category.options.map((option) => (
                   <div key={option} className="option">
@@ -95,7 +109,6 @@ const FilteringOptions = () => {
             </div>
           </div>
         ))}
-        {/* Botão para mostrar as opções selecionadas */}
         <button
           className="button"
           id="showoptions"

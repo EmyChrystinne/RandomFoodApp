@@ -102,3 +102,29 @@
     margin: 0;
     padding: 0;
 }
+
+.noResultsMessage {
+  display: flex;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000000;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px;
+  gap: 10px;
+  text-align: center;
+}
+
+.noResultsMessage a {
+  color: #000000;
+  margin-left: 5px;
+}
+
+.noResultsMessage a:hover {
+  font-size: 18px;
+  transition: 0.3s;
+  color: #ff9900;
+}

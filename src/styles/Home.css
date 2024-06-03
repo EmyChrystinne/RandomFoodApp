@@ -94,17 +94,6 @@
   /* color: #fff; */
 }
 
-.sugestion{
-  font-size: 16px;
-  display: flex;
-  flex-direction: column;
-}
-
-.sugestion a{
-  color: #f90;
-
-}
-
 @media screen and (min-width: 768px){
   .Surprise{
     width: 400px;

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "../styles/Surprise.css";
 import BackButton from "./BackButton.js";
-import Footer from "./Footer.js";
+import Footer from "./Footer";
+const API = process.env.REACT_APP_URL
 
 const SurpriseSelection = () => {
-  const API = process.env.REACT_APP_URL
   const [SurpriseSelection, setRandomRestaurant] = useState(null); //
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const SurpriseSelection = () => {
       console.log("fetchRandomRestaurant");
       try {
         const response = await axios.get(
-          `${API}/restaurants/random`
+          `${API}/random`
         );
         setRandomRestaurant(response.data);
       } catch (error) {
@@ -28,11 +28,18 @@ const SurpriseSelection = () => {
   const handleRefresh = async () => {
     try {
       const response = await axios.get(
-        `${API}/restaurants/random`
+        `${API}/random`
       );
       setRandomRestaurant(response.data);
     } catch (error) {
       console.error("Erro ao obter restaurante aleatório:", error);
+    }
+  };
+
+  const handleGoToGoogleMaps = () => {
+    if (SurpriseSelection) {
+      const restaurantName = encodeURIComponent(SurpriseSelection.nome);
+      window.open(`https://www.google.com.br/maps/search/${restaurantName}`, "_blank");
     }
   };
 
@@ -43,20 +50,20 @@ const SurpriseSelection = () => {
         {SurpriseSelection ? (
           <div className="card">
             <p id="nome">
-              <strong>{SurpriseSelection.NOME}</strong> 
+              <strong>{SurpriseSelection.nome}</strong> 
             </p>
             <div className="infos">
             <p className="info">
-              <strong>Categoria:</strong> {SurpriseSelection.Categoria}
+              <strong>Categoria:</strong> {SurpriseSelection.categoria}
             </p>
             <p className="info">
-              <strong>Preço Médio:</strong> {SurpriseSelection.Preço}
+              <strong>Preço Médio:</strong> {SurpriseSelection.preço}
             </p>
             <p className="info">
-              <strong>Refeição:</strong> {SurpriseSelection.Refeição}
+              <strong>Refeição:</strong> {SurpriseSelection.refeição.join(", ")}
             </p>
             <p className="info">
-              <strong>Localização:</strong> {SurpriseSelection.Localização}
+              <strong>Localização:</strong> {SurpriseSelection.localização.join(", ")}
             </p>
           </div>
           </div>
@@ -65,9 +72,7 @@ const SurpriseSelection = () => {
         )}
         </div>
       <div className="buttons">
-        <Link to="/">
-          <button id="go" className="button">SIMBORA!</button>
-        </Link>
+          <button id="go" className="button" onClick={handleGoToGoogleMaps}>SIMBORA!</button>
         <button onClick={handleRefresh} className="button" id="outro">Que tal outro?</button>
       </div>
       <Footer />

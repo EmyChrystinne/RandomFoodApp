@@ -2,13 +2,15 @@ import React from "react";
 import "../styles/Home.css"; // Importe o arquivo CSS
 import { Link } from "react-router-dom";
 import logo from "../assets/RandomFood Logo.svg"; // Importe o logo
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
+import LogoutButton from "./LogoutButton";
 import Footer from "./Footer";
 
 const Home = () => {
   return (
     <div className="Home">
-        <Analytics/>
+      <LogoutButton />
+      <Analytics />
       <img src={logo} alt="RandomFood Logo" />
       <h2>O que vamos comer hoje?</h2>
       {/* Botão para acessar a página de seleção aleatória */}
@@ -59,7 +61,6 @@ const Home = () => {
         <Footer/>
     </div>
   );
-
 };
 
 export default Home;
