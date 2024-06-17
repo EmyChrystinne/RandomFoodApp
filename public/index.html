@@ -7,16 +7,48 @@
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="Acabe com a indecisão da sua próxima refeição utlizando RandomFood! O aplicativo que te ajuda a escolher o que comer!"
     />
     <link rel="apple-touch-icon" href="RandomFood Logo.svg" />
 
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!-- SEO Meta Tags -->
+    <meta
+      name="keywords"
+      content="RandomFood, restaurantes, refeição, comida, onde comer, escolha de restaurante, decidir restaurante, almoço, jantar, café da manhã, delivery, comida rápida, melhores restaurantes, food app, aplicativo de comida, locais para comer, guia de restaurantes, food finder, opções de refeição, sabores locais, recomendação de restaurante"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="NoName Tecnology" />
+
+    <!-- Open Graph Meta Tags para Facebook e outras redes sociais -->
+    <meta property="og:title" content="RandomFood App" />
+    <meta
+      property="og:description"
+      content="Acabe com a indecisão da sua próxima refeição utilizando RandomFood! Encontre os melhores restaurantes e opções de comida na sua região."
+    />
+    <meta property="og:image" content="../src/assets/RandomFood Logo.svg" />
+    <meta property="og:url" content="https://randomfood.com.br" />
+    <meta property="og:type" content="website" />
+
+    <meta manifest="../public/manifest.json" />
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-12QZC944GC"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-12QZC944GC");
+    </script>
 
     <title>RandomFood App</title>
   </head>
   <body>
     <div id="root"></div>
-
   </body>
 </html>
